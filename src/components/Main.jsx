@@ -1,10 +1,5 @@
 import React from "react";
 
 export default function Main({ children }) {
-  return (
-    <main>
-      Main
-      {children}
-    </main>
-  );
+  return <main>{children}</main>;
 }
