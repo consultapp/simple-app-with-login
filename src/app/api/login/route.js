@@ -1,8 +1,13 @@
-export async function GET(request) {
-  const { searchParams } = new URL(request.url);
-  const id = searchParams.get("id");
+import { NextResponse } from "next/server";
 
-  return NextResponse.json();
+const USER_NAME = "Admin";
+const USER_PASSWORD = "12345";
+
+export async function POST(request) {
+  const { login, password } = await request.json();
+  const status = USER_NAME === login && password === USER_PASSWORD;
+
+  return NextResponse.json({ status });
 }
 
 // https://consultapp.ru/wp-json/wp/v2/posts?categories=38

@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 async function getNewsById(id) {
   const url = "https://jsonplaceholder.typicode.com/posts/?id=" + id;
@@ -12,7 +13,6 @@ export async function generateMetadata({ params }) {
   const { id } = params;
   const news = await getNewsById(id);
 
-  console.log("news", news);
   if (!news || !news.length) return notFound();
 
   const { title } = news[0];

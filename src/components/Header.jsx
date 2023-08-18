@@ -4,7 +4,7 @@ import Navigation from "./Navigation";
 export default function Header() {
   return (
     <header>
-      <div>Заголовок</div>
+      <div>Simple App + Auth</div>
       <Navigation />
     </header>
   );
