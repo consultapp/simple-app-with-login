@@ -10,7 +10,7 @@ export const authSlice = createSlice({
       let { isAuth, name } = initialState;
 
       if (typeof localStorage !== "undefined") {
-        isAuth = Boolean(localStorage.getItem("isAuth") || false);
+        isAuth = localStorage.getItem("isAuth") === "true" || false;
         name = localStorage.getItem("name") || "";
       }
 

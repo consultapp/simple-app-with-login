@@ -1,4 +1,4 @@
-const selectAuth = (state) => state?.auth || {};
+const selectAuth = (state) => state?.auth;
 
 export const selectIsAuth = (state) => selectAuth(state)?.isAuth || false;
 

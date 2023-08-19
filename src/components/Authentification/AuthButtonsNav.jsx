@@ -12,19 +12,23 @@ export default function AuthButtonsNav() {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  console.log("isAuth", isAuth);
+  console.log(isAuth);
+
   return isAuth ? (
     <>
       <span>{name}</span>{" "}
       <button onClick={() => dispatch(signOut())}>Выйти</button>
     </>
   ) : (
-    <button
-      onClick={() => {
-        router.push("/login");
-      }}
-    >
-      Войти
-    </button>
+    <>
+      <span></span>{" "}
+      <button
+        onClick={() => {
+          router.push("/login");
+        }}
+      >
+        Войти
+      </button>{" "}
+    </>
   );
 }

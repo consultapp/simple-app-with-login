@@ -25,8 +25,6 @@ export default function AuthForm() {
       headers: {
         "Content-Type": "application/json",
       },
-      // redirect: "follow",
-      // referrerPolicy: "no-referrer",
       body: JSON.stringify({ login, password }),
     })
       .then((response) => response.json())
@@ -35,23 +33,21 @@ export default function AuthForm() {
         const { status, name } = json;
         if (status) {
           dispatch(signIn({ isAuth: true, name }));
-          setTimeout(() => {
-            router.push("/profile");
-          });
+          router.push("/profile");
         }
       });
   }
 
   return (
     <div className="login-wrap">
-      <div className="login-form">
+      <form className="login-form">
         <h1>Авторизация</h1>
         <input type="text" ref={loginRef} placeholder="Логин" />
         <input type="password" ref={passwordRef} placeholder="Пароль" />
         <button type="submit" onClick={submitButton}>
           Войти
         </button>
-      </div>
+      </form>
     </div>
   );
 }
