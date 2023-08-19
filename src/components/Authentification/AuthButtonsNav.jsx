@@ -12,8 +12,6 @@ export default function AuthButtonsNav() {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  console.log(isAuth);
-
   return isAuth ? (
     <>
       <span>{name}</span>{" "}
