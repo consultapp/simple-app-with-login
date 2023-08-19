@@ -1,22 +1,19 @@
-"use client";
-
 import React, { useEffect, useState, useRef } from "react";
 import { redirect } from "next/navigation";
-import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
 
 export default function AuthForm() {
-  const [isAuth, setIsAuth] = useState(Boolean(localStorage.getItem("auth")));
-  const router = useRouter();
-
-  const login = useRef();
-  const password = useRef();
+  const dispatch = useDispatch();
+  const loginRef = useRef();
+  const passwordRef = useRef();
 
   async function submitButton(e) {
     e.preventDefault();
-    const l = login.current.value;
-    const p = password.current.value;
+    const login = login.current.value;
+    const password = password.current.value;
 
-    if (!l && !p && !l.length > 3 && !p.length > 4) return;
+    if (!login && !password && !login.length > 3 && !password.length > 4)
+      return;
 
     fetch("/api/login", {
       method: "POST",
@@ -28,23 +25,18 @@ export default function AuthForm() {
       },
       // redirect: "follow",
       // referrerPolicy: "no-referrer",
-      body: JSON.stringify({ login: l, password: p }),
+      body: JSON.stringify({ login, password }),
     })
       .then((response) => response.json())
       .then((json) => {
         if (!json) alert("Ошибка соединения.");
-        const { status } = json;
-        setIsAuth(status);
+        const { status, name } = json;
+        if (status) {
+          dispatch(signIn({ isAuth: true, name }));
+          redirect("/profile");
+        }
       });
   }
-
-  useEffect(() => {
-    localStorage.setItem("auth", isAuth);
-
-    if (isAuth) {
-      redirect("/profile");
-    }
-  }, [isAuth]);
 
   return (
     <div className="login-wrap">

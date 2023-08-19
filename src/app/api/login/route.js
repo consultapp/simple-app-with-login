@@ -1,13 +1,12 @@
 import { NextResponse } from "next/server";
 
-const USER_NAME = "Admin";
+const USER_LOGIN = "Admin";
+const USER_NAME = "Ivan";
 const USER_PASSWORD = "12345";
 
 export async function POST(request) {
   const { login, password } = await request.json();
-  const status = USER_NAME === login && password === USER_PASSWORD;
+  const status = USER_LOGIN === login && password === USER_PASSWORD;
 
-  return NextResponse.json({ status });
+  return NextResponse.json({ status, name: USER_NAME });
 }
-
-// https://consultapp.ru/wp-json/wp/v2/posts?categories=38
