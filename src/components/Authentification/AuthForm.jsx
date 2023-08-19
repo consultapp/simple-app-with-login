@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { signIn } from "store/entities/auth";
 
@@ -7,6 +7,7 @@ export default function AuthForm() {
   const dispatch = useDispatch();
   const loginRef = useRef();
   const passwordRef = useRef();
+  const router = useRouter();
 
   async function submitButton(e) {
     e.preventDefault();
@@ -35,7 +36,7 @@ export default function AuthForm() {
         if (status) {
           dispatch(signIn({ isAuth: true, name }));
           setTimeout(() => {
-            redirect("/profile");
+            router.push("/profile");
           });
         }
       });

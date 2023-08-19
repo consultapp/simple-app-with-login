@@ -1,19 +1,30 @@
 "use client";
 
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "store/entities/auth";
 import { selectIsAuth, selectUserName } from "store/entities/auth/selectors";
 
 export default function AuthButtonsNav() {
-  const isAuth = useDispatch(selectIsAuth);
-  const name = useDispatch(selectUserName);
-  return <>{!isAuth && <Link href="/login">Войти</Link>}</>;
-}
+  const isAuth = useSelector(selectIsAuth);
+  const name = useSelector(selectUserName);
+  const dispatch = useDispatch();
+  const router = useRouter();
 
-// {isAuth ? (
-//   <>
-//     <span>{name}</span> <button onClick={() => signOut()}>Выйти</button>
-//   </>
-// ) : (
+  console.log("isAuth", isAuth);
+  return isAuth ? (
+    <>
+      <span>{name}</span>{" "}
+      <button onClick={() => dispatch(signOut())}>Выйти</button>
+    </>
+  ) : (
+    <button
+      onClick={() => {
+        router.push("/login");
+      }}
+    >
+      Войти
+    </button>
+  );
+}

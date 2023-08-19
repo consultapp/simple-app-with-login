@@ -14,11 +14,17 @@ export const authSlice = createSlice({
         name = localStorage.getItem("name") || "";
       }
 
-      state.auth = isAuth;
+      state.isAuth = isAuth;
       state.name = name;
     },
     signOut: (state) => {
-      state = initialState;
+      state.isAuth = initialState.isAuth;
+      state.name = initialState.name;
+
+      if (typeof localStorage !== "undefined") {
+        localStorage.setItem("isAuth", initialState.isAuth);
+        localStorage.setItem("name", initialState.name);
+      }
     },
     signIn: (state, { payload }) => {
       state.isAuth = payload.isAuth;
