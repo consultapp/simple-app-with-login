@@ -7,7 +7,7 @@ export const authSlice = createSlice({
   initialState: initialState,
   reducers: {
     preload: (state) => {
-      let [isAuth, name] = initialState;
+      let { isAuth, name } = initialState;
 
       if (typeof localStorage !== "undefined") {
         isAuth = Boolean(localStorage.getItem("isAuth") || false);

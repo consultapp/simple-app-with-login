@@ -1,6 +1,7 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useRef } from "react";
 import { redirect } from "next/navigation";
 import { useDispatch } from "react-redux";
+import { signIn } from "store/entities/auth";
 
 export default function AuthForm() {
   const dispatch = useDispatch();
@@ -9,8 +10,8 @@ export default function AuthForm() {
 
   async function submitButton(e) {
     e.preventDefault();
-    const login = login.current.value;
-    const password = password.current.value;
+    const login = loginRef.current.value;
+    const password = passwordRef.current.value;
 
     if (!login && !password && !login.length > 3 && !password.length > 4)
       return;
@@ -33,7 +34,9 @@ export default function AuthForm() {
         const { status, name } = json;
         if (status) {
           dispatch(signIn({ isAuth: true, name }));
-          redirect("/profile");
+          setTimeout(() => {
+            redirect("/profile");
+          });
         }
       });
   }
@@ -42,8 +45,8 @@ export default function AuthForm() {
     <div className="login-wrap">
       <div className="login-form">
         <h1>Авторизация</h1>
-        <input type="text" ref={login} placeholder="Логин" />
-        <input type="password" ref={password} placeholder="Пароль" />
+        <input type="text" ref={loginRef} placeholder="Логин" />
+        <input type="password" ref={passwordRef} placeholder="Пароль" />
         <button type="submit" onClick={submitButton}>
           Войти
         </button>

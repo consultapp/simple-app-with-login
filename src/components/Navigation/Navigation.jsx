@@ -1,3 +1,4 @@
+import AuthButtonsNav from "components/Authentification/AuthButtonsNav";
 import Link from "next/link";
 import React from "react";
 
@@ -7,6 +8,7 @@ export default function Navigation() {
       <Link href="/">Главная</Link>
       <Link href="/news">Новости</Link>
       <Link href="/profile">Профиль</Link>
+      <AuthButtonsNav />
     </nav>
   );
 }

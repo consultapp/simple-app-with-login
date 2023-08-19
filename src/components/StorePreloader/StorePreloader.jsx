@@ -1,7 +1,7 @@
 "use client";
 import { useRef } from "react";
-import { store } from "@/store/index";
-import { preload } from "@/store/entities/auth";
+import { preload } from "store/entities/auth";
+import { store } from "store/index";
 
 export default function StorePreloader() {
   const ref = useRef(true);

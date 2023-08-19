@@ -1,4 +1,4 @@
-import Auth from "@/components/Auth";
+import AuthController from "components/Authentification/AuthController";
 
 export const metadata = {
   title: "Private Layout - Simple Auth App",
@@ -6,5 +6,5 @@ export const metadata = {
 };
 
 export default function Layout({ children }) {
-  return <Auth>{children}</Auth>;
+  return <AuthController>{children}</AuthController>;
 }

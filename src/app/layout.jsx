@@ -1,8 +1,8 @@
 import "./globals.css";
-import StorePreloader from "@/components/StorePreloader/StorePreloader";
-import { StoreProvider } from "@/components/StoreProvider/StoreProvider";
-import { Header } from "@/components/Header/Header";
-import Main from "@/components/Main/Main";
+import StoreProvider from "components/StoreProvider/StoreProvider";
+import StorePreloader from "components/StorePreloader/StorePreloader";
+import Header from "components/Header/Header";
+import Main from "components/Main/Main";
 
 export const metadata = {
   title: "Simple Auth App",
