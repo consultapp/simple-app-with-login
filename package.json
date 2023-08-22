@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "dbuild": "docker build  --platform=linux/amd64 -t test7778/simple-auth-app .",
+    "drun": "docker run -d --rm  --platform=linux/amd64 --name simple-auth-app -p 3021:3000 test7778/simple-auth-app",
+    "dpush": "docker push test7778/simple-auth-app"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
