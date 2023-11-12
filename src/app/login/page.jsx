@@ -11,7 +11,7 @@ export default function LoginPage() {
   const isAuth = useSelector(selectIsAuth);
 
   if (isAuth) {
-    router.replace("/profile");
+    router.push("/profile");
     return <p>Переход на страницу профиля</p>;
   }
 
