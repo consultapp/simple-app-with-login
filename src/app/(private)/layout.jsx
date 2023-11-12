@@ -1,4 +1,5 @@
 import AuthController from "components/Authentification/AuthController";
+import "./style.css";
 
 export const metadata = {
   title: "Private Layout - Simple Auth App",

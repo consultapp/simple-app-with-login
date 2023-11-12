@@ -1,7 +1,7 @@
 "use client";
 
 import AuthForm from "components/Authentification/AuthForm";
-import "./style.css";
+
 import { useSelector } from "react-redux";
 import { selectIsAuth } from "store/entities/auth/selectors";
 import { useRouter } from "next/navigation";
